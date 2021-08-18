@@ -89,7 +89,7 @@ namespace Microsoft.Maui.DeviceTests
 
 		private IImageSourceServiceProvider CreateImageSourceServiceProvider(Action<IImageSourceServiceCollection> configure)
 		{
-			var services = MauiAppBuilder.CreateBuilder()
+			var services = MauiAppBuilder.CreateBuilder(useDefaults: false)
 				.ConfigureImageSources(configure)
 				.Build();
 

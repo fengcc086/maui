@@ -12,18 +12,21 @@ namespace Microsoft.Maui
 {
 	public sealed class MauiAppBuilder
 	{
-		private MauiAppBuilder()
+		private MauiAppBuilder(bool useDefaults = true)
 		{
-			// Register required services
-			ConfigureMauiHandlers(configureDelegate: null);
+			if (useDefaults)
+			{
+				// Register required services
+				ConfigureMauiHandlers(configureDelegate: null);
 
-			ConfigureFonts();
-			ConfigureImageSources();
-			//ConfigureAnimations();
-			this.ConfigureCrossPlatformLifecycleEvents();
+				ConfigureFonts();
+				ConfigureImageSources();
+				//ConfigureAnimations();
+				this.ConfigureCrossPlatformLifecycleEvents();
+			}
 		}
 
-		public static MauiAppBuilder CreateBuilder() => new();
+		public static MauiAppBuilder CreateBuilder(bool useDefaults = true) => new(useDefaults);
 
 		/// <summary>
 		/// A collection of services for the application to compose. This is useful for adding user provided or framework provided services.
